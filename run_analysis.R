@@ -70,14 +70,14 @@ rownames(combinedData)<-NULL # remove row.names
 
 # Make clearer names
 names(combinedData) <- gsub('\\(|\\)',"",names(combinedData)) 
-names(combinedData) <- gsub('\\.mean',".Mean",names(combinedData))
 names(combinedData) <- gsub('\\.std',".StandardDeviation",names(combinedData))
 names(combinedData) <- gsub('\\-std',"-standardDeviation",names(combinedData))
-names(combinedData) <- gsub('Acc',"Acceleration",names(combinedData))
+names(combinedData) <- gsub('\\.mean',".Mean",names(combinedData))
+names(combinedData) <- gsub('^f',"frequency.",names(combinedData))
 names(combinedData) <- gsub('Gyro',"Gyroscopic",names(combinedData))
+names(combinedData) <- gsub('Acc',"Acceleration",names(combinedData))
 names(combinedData) <- gsub('Mag',"Magnitude",names(combinedData))
 names(combinedData) <- gsub('^t',"time.",names(combinedData))
-names(combinedData) <- gsub('^f',"frequency.",names(combinedData))
 names(combinedData) <- gsub('meanFreq',"meanFrequency",names(combinedData))
 names(combinedData) <- gsub('Freq$',"Frequency",names(combinedData))
 
