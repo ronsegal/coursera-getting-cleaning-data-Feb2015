@@ -3,6 +3,10 @@ require(plyr)
 
 setwd('/home/ron/Coursera/GCdata');
 
+########################################################
+## Download the data source file and read-in the data 
+########################################################
+
 ## Download and unzip the dataset source file  - Commented out to avoid downloading when testing
 #fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 #download.file(fileUrl,destfile="Dataset.zip",method="wget") # NB - wget rather than curl on my Linux system 
@@ -65,16 +69,18 @@ rownames(combinedData)<-NULL # remove row.names
 ########################################################################
 
 # Make clearer names
+names(combinedData) <- gsub('\\(|\\)',"",names(combinedData)) 
 names(combinedData) <- gsub('\\.mean',".Mean",names(combinedData))
 names(combinedData) <- gsub('\\.std',".StandardDeviation",names(combinedData))
+names(combinedData) <- gsub('\\-std',"-standardDeviation",names(combinedData))
 names(combinedData) <- gsub('Acc',"Acceleration",names(combinedData))
 names(combinedData) <- gsub('Gyro',"Gyroscopic",names(combinedData))
 names(combinedData) <- gsub('Mag',"Magnitude",names(combinedData))
 names(combinedData) <- gsub('^t',"time.",names(combinedData))
-names(combinedData) <- gsub('^f',"Frequency.",names(combinedData))
-names(combinedData) <- gsub('Freq\\.',"Frequency.",names(combinedData))
+names(combinedData) <- gsub('^f',"frequency.",names(combinedData))
+names(combinedData) <- gsub('meanFreq',"meanFrequency",names(combinedData))
 names(combinedData) <- gsub('Freq$',"Frequency",names(combinedData))
-names(combinedData) <- gsub('\\(|\\)',"",names(combinedData)) 
+
 
 
 ##################################################################################################################
